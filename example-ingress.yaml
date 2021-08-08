@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: example-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+spec:
+  rules:
+    - host: my-ingress-doncic77.info
+      http:
+        paths:
+          - path: /d77
+            pathType: Prefix
+            backend:
+              service:
+                name: my-load-balancer-svc
+                port:
+                  number: 9999
